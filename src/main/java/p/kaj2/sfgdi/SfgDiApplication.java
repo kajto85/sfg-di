@@ -3,10 +3,7 @@ package p.kaj2.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import p.kaj2.sfgdi.controller.ConstructorInjectedController;
-import p.kaj2.sfgdi.controller.MyController;
-import p.kaj2.sfgdi.controller.PropertyInjectedController;
-import p.kaj2.sfgdi.controller.SetterInjectedController;
+import p.kaj2.sfgdi.controller.*;
 
 @SpringBootApplication
 public class SfgDiApplication {
@@ -15,8 +12,17 @@ public class SfgDiApplication {
 		ApplicationContext ctx= SpringApplication.run(SfgDiApplication.class, args);
 
 		MyController controller = ctx.getBean(MyController.class);
-		String greeting = controller.sayHello();
-		System.out.println(greeting);
+
+
+		System.out.println("---I18Controller---");
+		I18nController i18nController = ctx.getBean(I18nController.class);
+		System.out.println(i18nController.sayHello());
+
+
+
+
+		System.out.println("---Primary Bean------");
+		System.out.println(controller.sayHello());
 
 		System.out.println("--------------------");
 
